@@ -1,0 +1,70 @@
+<html>
+    <head>
+        <title>Определи положение</title>
+    </head>
+    <body>
+        <div class="left-element">
+            <h2>Объект: <span>{{ addr }}</span></h2>
+
+            <br>
+            <br>
+
+            <img name="pic" src="{{ image }}" >
+
+            <br>
+            <br>
+
+            <form action="/" method="POST">
+            
+                <input hidden name="pic_id" value={{ pic_id }}>
+    
+                <select name="label">
+                    <option value="красная">На красной линии</option>
+                    <option value="плвд">Первая линия второстенной дороги</option>
+                    <option value="внутрикварт">Внутриквартальное</option>
+                    <option value="непонятно">Непонятно</option>
+                    <option value="-">Картинка неверна</option>
+                </select>
+    
+                <br>
+                <br>
+    
+                <button type="submit">Отправить</button>
+            </form>
+        </div>
+        
+        <div class="right-element">
+            <h3>Общее</h3>
+        
+            <p>Всего обработано: <span> {{ data["done"] }} / {{ total }}</span></p>
+            <p>За сессию обработано: <span> {{ sess_done }}</span></p>
+
+            <h3>По классам</h3>
+
+            <p>На красной линии: <span>{{ data["red"] }}</span></p>
+            <p>Первая линия второстенной дороги: <span>{{ data["secondary"] }}</span></p>
+            <p>Внутриквартальное: <span>{{ data["quater"] }}</span></p>
+            <p>Непонятно: <span>{{ data["unknown"] }}</span></p>
+            <p>Картинка неверна: <span>{{ data["wrong"] }}</span></p>
+
+            <form action="/delete">
+                <input type="submit" value="Хватит на сегодня" />
+            </form>
+        </div>
+
+    <style>
+
+    .left-element {
+        display: inline-block;
+        margin-right: 17px;
+        float: left;
+    }
+
+    .right-element {
+        display: inline-block;
+        float: left;
+    }
+    </style>
+
+    </body>
+</html>
